@@ -17,3 +17,5 @@ project/plugins/project/
 .lib/
 setVariables.sh
 .idea/
+project/project/
+src/test/
