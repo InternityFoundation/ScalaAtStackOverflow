@@ -11,4 +11,6 @@ object AppConfig {
   val questionsURL = config.getString("stackoverflow.questionsURL")
   val authKey = config.getString("stackoverflow.authKey")
   val tag = "scala"
+  val address = config.getString("rest.url")
+  val port = config.getInt("rest.port")
 }

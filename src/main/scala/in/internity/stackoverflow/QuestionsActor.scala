@@ -34,11 +34,9 @@ class QuestionsActor(http: HttpExt, soUrl: String, key: String)
 
     case Fetch(tag, fromDate) =>
       val fetch = fetchQuestions(tag, fromDate)
-      fetch.onComplete(a => println(a.get))
       fetch.map { a =>
         a.items.headOption.foreach(a => TimeCache.time = a.creation_date)
         a.items.map { question =>
-          println("Question:", question)
           if (!listOfQuestions.contains(question.question_id)) {
             val tweet = TwitterCommunicator.formulateTweet(question)
             log.info(s"Tweet: $tweet")
@@ -58,10 +56,9 @@ class QuestionsActor(http: HttpExt, soUrl: String, key: String)
       "tagged" -> tag,
       "site" -> "stackoverflow",
       "pagesize" -> "100",
-      "fromdate" -> fromDate.toLong.toString
+      "fromdate" -> (fromDate.toLong + 1).toString
     )
     val url = Uri(soUrl).withQuery(Uri.Query(queryMap))
-    println(url)
     http.singleRequest(HttpRequest(uri = url)).map(decodeResponse).flatMap(responseToQuestion)
   }
 
