@@ -16,7 +16,7 @@ libraryDependencies ++= Seq(
   "com.danielasfregola" %% "twitter4s" % "5.4-SNAPSHOT",
   //For json Conversion
   "org.json4s" %% "json4s-native" % "3.5.3",
-  "de.heikoseeberger" %% "akka-http-json4s" % "1.18.1",
+  "de.heikoseeberger" %% "akka-http-json4s" % "1.11.0",
   "org.scalatest" %% "scalatest" % "3.0.0" % Test,
   "org.mockito" % "mockito-core" % "2.8.47" % Test,
 )
