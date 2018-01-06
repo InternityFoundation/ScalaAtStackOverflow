@@ -1,1 +1,1 @@
-web: target/universal/stage/bin/scalaatstackove
+web: target/universal/stage/bin/ScalaAtStackOve -Dhttp.port=$PORT
