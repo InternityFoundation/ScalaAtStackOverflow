@@ -24,7 +24,7 @@ object RestService {
     val routes =
       path("") {
         get {
-          complete("""Visit me at : https://www.twitter.com/ScalaAtStackOve">""")
+          complete("""Visit me at : https://www.twitter.com/ScalaAtStackOve""")
         }
       }
 
