@@ -15,5 +15,5 @@ project/plugins/project/
 .history
 .cache
 .lib/
-
+setVariables.sh
 .idea/
