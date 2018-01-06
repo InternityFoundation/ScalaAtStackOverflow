@@ -30,3 +30,5 @@ dependencyOverrides ++= Seq(
 
 resolvers += Resolver.bintrayRepo("hseeberger", "maven")
 resolvers += Resolver.sonatypeRepo("snapshots")
+
+enablePlugins(JavaServerAppPackaging)
