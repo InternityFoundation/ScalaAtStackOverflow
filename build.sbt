@@ -6,8 +6,6 @@ scalaVersion := "2.12.4"
 
 organization := "in.internity"
 
-coverageEnabled := true
-
 // The necessary dependencies can be added here
 
 libraryDependencies ++= Seq(
