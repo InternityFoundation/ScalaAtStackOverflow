@@ -20,7 +20,8 @@ object Boot extends App {
   implicit val materializer: ActorMaterializer = ActorMaterializer()
   implicit val executionContext: ExecutionContextExecutor = actorSystem.dispatcher
 
-  RestService.run()
+  val bind = RestService.run()
+  bind.onComplete(a => println(a.get))
   val questionsActor = actorSystem.actorOf(QuestionsActor.props(questionsURL, authKey))
   actorSystem.scheduler.schedule(500 millis, 5000 milli) {
     questionsActor ! Fetch(tag, TimeCache.time)
