@@ -10,7 +10,7 @@ import akka.stream.Materializer
 import de.heikoseeberger.akkahttpjson4s.Json4sSupport
 import in.internity.TimeCache
 import in.internity.models.Questions
-import in.internity.twitter._
+import in.internity.twitter.TwitterCommunicator
 import org.json4s.native.Serialization
 import org.json4s.{DefaultFormats, native}
 
