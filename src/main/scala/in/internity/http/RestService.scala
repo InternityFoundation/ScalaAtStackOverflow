@@ -32,7 +32,7 @@ object RestService {
             <html>
               <body>
                 <h1>StackOverflow Bot</h1>
-                <h2>Visit me at: <a href="https://www.twitter.com/ScalaAtStackOve">ScalaAtStackOve</a></h2>
+                <h2>Visit me at: <a href="https://www.twitter.com/ScalaAtStack">ScalaAtStackOverflow</a></h2>
                 <h3>Maintained By: <a href="https://www.twitter.com/Internity_learn">InternityFoundation</a></h3>
               </body>
             </html>
