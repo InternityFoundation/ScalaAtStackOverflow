@@ -3,7 +3,7 @@ package in.internity
 import akka.actor.ActorSystem
 import akka.stream.ActorMaterializer
 import in.internity.http.RestService
-import in.internity.stackoverflow.{Fetch, QuestionsActor}
+import in.internity.stackoverflow.{CallHeroku, Fetch, QuestionsActor}
 
 import scala.concurrent.ExecutionContextExecutor
 import scala.concurrent.duration._
@@ -25,6 +25,9 @@ object Boot extends App {
   val questionsActor = actorSystem.actorOf(QuestionsActor.props(questionsURL, authKey))
   actorSystem.scheduler.schedule(500 millis, 5000 milli) {
     questionsActor ! Fetch(tag, TimeCache.time)
+  }
+  actorSystem.scheduler.schedule(500 millis,10 minute) {
+    questionsActor ! CallHeroku
   }
 }
 
