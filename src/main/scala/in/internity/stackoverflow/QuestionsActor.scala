@@ -10,7 +10,7 @@ import akka.stream.Materializer
 import de.heikoseeberger.akkahttpjson4s.Json4sSupport
 import in.internity.TimeCache
 import in.internity.models.Questions
-import in.internity.twitter.TwitterCommunicator
+import in.internity.twitter._
 import org.json4s.native.Serialization
 import org.json4s.{DefaultFormats, native}
 
@@ -35,7 +35,10 @@ class QuestionsActor(http: HttpExt, soUrl: String, key: String)
     case Fetch(tag, fromDate) =>
       val fetch = fetchQuestions(tag, fromDate)
       fetch.map { a =>
-        a.items.headOption.foreach(a => TimeCache.time = a.creation_date)
+        a.items.headOption.foreach{a =>
+          log.info(s"UpdatingTimeCache with:::${a.creation_date.toLong}")
+          TimeCache.time = a.creation_date
+        }
         a.items.map { question =>
           if (!listOfQuestions.contains(question.question_id)) {
             val tweet = TwitterCommunicator.formulateTweet(question)
@@ -59,6 +62,7 @@ class QuestionsActor(http: HttpExt, soUrl: String, key: String)
       "fromdate" -> (fromDate.toLong + 1).toString
     )
     val url = Uri(soUrl).withQuery(Uri.Query(queryMap))
+    log.info(s"Url:$url")
     http.singleRequest(HttpRequest(uri = url)).map(decodeResponse).flatMap(responseToQuestion)
   }
 
