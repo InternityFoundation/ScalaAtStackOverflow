@@ -49,6 +49,11 @@ class QuestionsActor(http: HttpExt, soUrl: String, key: String)
         }
       }
 
+    case CallHeroku=>
+      http.singleRequest(HttpRequest(uri = "https://stackoverflowbot.herokuapp.com/")).onComplete({a=>
+        println("Called heroku Responded with:",a.get.status)
+      })
+
   }
 
   def fetchQuestions(tag: String, fromDate: Double): Future[Questions] = {
@@ -94,3 +99,4 @@ object QuestionsActor {
 }
 
 case class Fetch(tag: String, fromDate: Double)
+case object CallHeroku
