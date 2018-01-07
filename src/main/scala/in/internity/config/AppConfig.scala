@@ -13,4 +13,5 @@ object AppConfig {
   val tag = "scala"
   val address = config.getString("rest.url")
   val port = config.getInt("rest.port")
+  val fileAddress=config.getString("fileAddress")
 }
